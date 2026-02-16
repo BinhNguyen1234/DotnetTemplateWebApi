@@ -20,10 +20,13 @@ RUN apt-get update \
     clang zlib1g-dev
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["WebMinimalApiAOT.csproj", "WebMinimalApiAOT/"]
+COPY ["/WebMinimalApiAOT/WebMinimalApiAOT.csproj", "WebMinimalApiAOT/"]
+COPY ["/Aspire.ServiceDefaults/Aspire.ServiceDefaults.csproj", "Aspire.ServiceDefaults/"]
+RUN dotnet restore "./Aspire.ServiceDefaults/Aspire.ServiceDefaults.csproj"
 RUN dotnet restore "./WebMinimalApiAOT/WebMinimalApiAOT.csproj"
+COPY ["/Aspire.ServiceDefaults/", "Aspire.ServiceDefaults/"]
+COPY ["/WebMinimalApiAOT/", "WebMinimalApiAOT/"]
 WORKDIR "/src/WebMinimalApiAOT"
-COPY . .
 RUN dotnet build "./WebMinimalApiAOT.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage

@@ -12,10 +12,13 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["WebControllerApi.csproj", "WebControllerApi/"]
+COPY ["/WebControllerApi/WebControllerApi.csproj", "WebControllerApi/"]
+COPY ["/Aspire.ServiceDefaults/Aspire.ServiceDefaults.csproj", "Aspire.ServiceDefaults/"]
+RUN dotnet restore "./Aspire.ServiceDefaults/Aspire.ServiceDefaults.csproj"
 RUN dotnet restore "./WebControllerApi/WebControllerApi.csproj"
+COPY ["/Aspire.ServiceDefaults/", "Aspire.ServiceDefaults/"]
+COPY ["/WebControllerApi/", "WebControllerApi/"]
 WORKDIR "/src/WebControllerApi"
-COPY . .
 RUN dotnet build "./WebControllerApi.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage

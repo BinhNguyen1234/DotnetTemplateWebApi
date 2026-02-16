@@ -14,4 +14,10 @@
     <PackageReference Include="Aspire.Hosting.AppHost" Version="9.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FunctionApp\FunctionApp.csproj" />
+    <ProjectReference Include="..\WebControllerApi\WebControllerApi.csproj" />
+    <ProjectReference Include="..\WebMinimalApiAOT\WebMinimalApiAOT.csproj" />
+  </ItemGroup>
+
 </Project>

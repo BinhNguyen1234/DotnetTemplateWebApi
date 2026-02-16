@@ -1,39 +1,22 @@
 services:
-  api:
+  web-controller-api:
     build:
       context: .
       dockerfile: WebControllerApi/Dockerfile
     container_name: my-api
     ports:
       - "5000:8080"
+      - "5001:8081"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=mydb;Username=postgres;Password=postgres
-      - RabbitMQ__Host=rabbitmq
-    depends_on:
-      - postgres
-      - rabbitmq
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
 
-  postgres:
-    image: postgres:16
-    container_name: my-postgres
-    restart: always
-    environment:
-      POSTGRES_DB: mydb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+  web-minimal-api:
+    build:
+     context: .
+     dockerfile: WebMinimalApiAOT/Dockerfile
     ports:
-      - "5432:5432"
-    volumes:
-      - postgres-data:/var/lib/postgresql/data
-
-  rabbitmq:
-    image: rabbitmq:3-management
-    container_name: my-rabbitmq
-    ports:
-      - "5672:5672"
-      - "15672:15672" # UI
-    restart: always
-
+      - "5002:8080"
 volumes:
   postgres-data:
