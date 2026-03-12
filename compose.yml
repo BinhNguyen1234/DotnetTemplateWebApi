@@ -1,5 +1,6 @@
 services:
   web-controller-api:
+    image: "web-controller-api-v1"
     build:
       context: .
       dockerfile: WebControllerApi/Dockerfile
@@ -12,10 +13,23 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
 
   web-minimal-api:
+    image: "web-minimal-api-v1"
     build:
      context: .
      dockerfile: WebMinimalApiAOT/Dockerfile
     ports:
       - "5002:8080"
+  pg-sql-binh:
+    image: postgres:16
+    container_name: binh-dev-pgsql
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 170116Abc
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_dev:/var/lib/postgresql/data
+
 volumes:
-  postgres-data:
+  postgres_data_dev:

@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deloyment
+metadata:
+  name: binh-dotnet-app-template-deloyment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-controller-service
+  template:
+    metadata:
+      labels:
+        app: api-controller-service
+    spec:
+      containers:
+        - name: api-controller-container
+          image: 
+  
