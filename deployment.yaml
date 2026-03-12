@@ -13,6 +13,9 @@ spec:
         app: api-controller-service
     spec:
       containers:
-        - name: api-controller-container
-          image: 
+      - name: api-controller-container
+        image: web-controller-api-v1
+        ports:
+        - containerPort: 80
+          
   
