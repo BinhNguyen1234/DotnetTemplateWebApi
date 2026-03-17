@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deloyment
+kind: Deployment
 metadata:
   name: binh-dotnet-app-template-deloyment
 spec:

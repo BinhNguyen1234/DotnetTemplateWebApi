@@ -1,0 +1,9 @@
+apply deployment to kubectl 
+-  kubectl apply -f deployment.yaml
+
+build image local
+- docker compose build
+
+load image local to minikube
+- minikube image load web-controller-api-v1
+- minikube image load web-controller-api-v1
