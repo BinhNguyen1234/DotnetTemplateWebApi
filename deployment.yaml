@@ -15,6 +15,7 @@ spec:
       containers:
       - name: api-controller-container
         image: web-controller-api-v1
+        imagePullPolicy: Never
         ports:
         - containerPort: 80
           
