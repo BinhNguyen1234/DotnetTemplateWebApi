@@ -4,12 +4,14 @@ metadata:
   name: myapp-service
 spec:
   selector:
-    app: web-controller-api
+    app: api-controller-service
   ports:
-  - port: 5000
+  - name: http
+    port: 5000
     targetPort: 8080
     nodePort: 30007
-  - port: 5001
+  - name: https
+    port: 5001
     targetPort: 8081
     nodePort: 30008
   type: NodePort
