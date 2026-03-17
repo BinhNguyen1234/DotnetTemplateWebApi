@@ -4,7 +4,7 @@ metadata:
   name: myapp-service
 spec:
   selector:
-    app: api-controller-service
+    app: api-controller-service # matching với những pod nào có app = ...
   ports:
   - name: http
     port: 5000

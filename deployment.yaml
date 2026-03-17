@@ -6,11 +6,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: api-controller-service
+      app: api-controller-service # matching với những pod nào có app = ...
   template:
     metadata:
       labels:
-        app: api-controller-service
+        app: api-controller-service  # tạo label - app cho template này
     spec:
       containers:
       - name: api-controller-container
