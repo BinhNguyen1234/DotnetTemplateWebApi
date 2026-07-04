@@ -15,8 +15,8 @@ services:
   web-minimal-api:
     image: "web-minimal-api-v1"
     build:
-     context: .
-     dockerfile: WebMinimalApiAOT/Dockerfile
+      context: .
+      dockerfile: WebMinimalApiAOT/Dockerfile
     ports:
       - "5002:8080"
   pg-sql-binh:
