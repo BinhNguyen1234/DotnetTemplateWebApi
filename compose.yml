@@ -13,7 +13,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
-      - ConnectionStrings__Database1=Host=postgres;Port=5432;Database=test_db;Username=admin;Password=170116Abc
+      - ConnectionStrings__Database1=Host=pg-sql-binh;Port=5432;Database=test_db;Username=postgres;Password=170116Abc
 
   web-minimal-api:
     image: "web-minimal-api-v1"
@@ -32,8 +32,8 @@ services:
     container_name: binh-dev-pgsql
     restart: always
     environment:
-      POSTGRES_DB: mydb
-      POSTGRES_USER: admin
+      POSTGRES_DB: test_db
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 170116Abc
     ports:
       - "5432:5432"
@@ -42,7 +42,7 @@ services:
     networks:
       - my-network-1
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d mydb"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d test_db"]
       interval: 5s
       timeout: 5s
       retries: 5
