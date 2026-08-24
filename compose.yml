@@ -18,7 +18,7 @@ services:
     image: "rate-limiter-api-v1"
     build:
       context: .
-      dockerfile: RateLimiterApi/Dockerfile
+      dockerfile: RateLimiterService/Dockerfile
     container_name : rate-limiter-api-container
     depends_on:
       redis-binh:

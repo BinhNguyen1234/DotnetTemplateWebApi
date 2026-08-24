@@ -10,11 +10,10 @@ builder.Services.AddOpenApi();
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = builder.Configuration.GetConnectionString("Redis");
-    options.InstanceName = "MyCache";
+    options.InstanceName = "RateLimiterService";
 });
 var app = builder.Build();
 
-app.MapDefaultEndpoints();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -12,10 +12,13 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Directory.Packages.props", "."]
+
+# COPY CPM
+COPY ["Directory.Packages.props", "Directory.Packages.props"]
 COPY ["RateLimiterService/RateLimiterService.csproj", "RateLimiterService/"]
 RUN dotnet restore "./RateLimiterService/RateLimiterService.csproj"
-COPY . .
+#COPY source code
+COPY ["/RateLimiterService/", "RateLimiterService/"]
 WORKDIR "/src/RateLimiterService"
 RUN dotnet build "./RateLimiterService.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
