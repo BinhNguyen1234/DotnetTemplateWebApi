@@ -11,11 +11,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Aspire.Hosting.AppHost"/>
+    <PackageReference Include="Aspire.Hosting.AppHost" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FunctionApp\FunctionApp.csproj" />
+    <ProjectReference Include="..\RateLimiterService\RateLimiterService.csproj" />
     <ProjectReference Include="..\WebControllerApi\WebControllerApi.csproj" />
     <ProjectReference Include="..\WebMinimalApiAOT\WebMinimalApiAOT.csproj" />
   </ItemGroup>

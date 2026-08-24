@@ -21,4 +21,5 @@ webMinimalApi.PublishAsDockerFile();
 
 
 var webServerApi = builder.AddProject<Projects.FunctionApp>("function-app");
+builder.AddProject<Projects.RateLimiterService>("ratelimiterservice");
 builder.Build().Run();

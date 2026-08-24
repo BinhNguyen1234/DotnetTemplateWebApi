@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.7.11903.348 stable
+VisualStudioVersion = 18.7.11903.348
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebMinimalApiAOT", "WebMinimalApiAOT\WebMinimalApiAOT.csproj", "{C5B6CFC5-0605-4B0E-BE2C-281C577D3759}"
 EndProject
@@ -21,6 +21,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunctionApp", "FunctionApp\FunctionApp.csproj", "{EC2536C3-137E-4567-8D4D-2DC53686E635}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib", "MyLib\MyLib.csproj", "{6B6EF035-1057-420B-9CDF-A046A49B6CD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RateLimiterService", "RateLimiterService\RateLimiterService.csproj", "{8AE7E53B-BE79-3462-60C6-32124F235311}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{6B6EF035-1057-420B-9CDF-A046A49B6CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B6EF035-1057-420B-9CDF-A046A49B6CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B6EF035-1057-420B-9CDF-A046A49B6CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AE7E53B-BE79-3462-60C6-32124F235311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AE7E53B-BE79-3462-60C6-32124F235311}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AE7E53B-BE79-3462-60C6-32124F235311}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AE7E53B-BE79-3462-60C6-32124F235311}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

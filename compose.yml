@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: WebControllerApi/Dockerfile
-    container_name: my-api
+    container_name: my-api-controller-container
     depends_on:
       - pg-sql-binh
     ports:
@@ -14,9 +14,22 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_HTTP_PORTS=8080
       - ConnectionStrings__Database1=Host=pg-sql-binh;Port=5432;Database=test_db;Username=postgres;Password=170116Abc
-
+  rate-limiter-api:
+    image: "rate-limiter-api-v1"
+    build:
+      context: .
+      dockerfile: RateLimiterApi/Dockerfile
+    container_name : rate-limiter-api-container
+    depends_on:
+      redis-binh:
+        condition: service_healthy
+    ports:
+      - "5003:8080"
+    networks:
+      - my-network-1
   web-minimal-api:
     image: "web-minimal-api-v1"
+    container_name: web-minimal-api-container
     build:
       context: .
       dockerfile: WebMinimalApiAOT/Dockerfile
@@ -46,6 +59,14 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
+  redis-binh:
+    image: redis:latest
+    container_name: binh-dev-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - my-network-1
 networks:
   my-network-1:
     driver: bridge
