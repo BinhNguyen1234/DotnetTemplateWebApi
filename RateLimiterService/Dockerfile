@@ -16,9 +16,12 @@ WORKDIR /src
 # COPY CPM
 COPY ["Directory.Packages.props", "Directory.Packages.props"]
 COPY ["RateLimiterService/RateLimiterService.csproj", "RateLimiterService/"]
+COPY ["/Aspire.ServiceDefaults/Aspire.ServiceDefaults.csproj", "Aspire.ServiceDefaults/"]
+RUN dotnet restore "./Aspire.ServiceDefaults/Aspire.ServiceDefaults.csproj"
 RUN dotnet restore "./RateLimiterService/RateLimiterService.csproj"
 #COPY source code
 COPY ["/RateLimiterService/", "RateLimiterService/"]
+COPY ["/Aspire.ServiceDefaults/", "Aspire.ServiceDefaults/"]
 WORKDIR "/src/RateLimiterService"
 RUN dotnet build "./RateLimiterService.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
