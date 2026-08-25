@@ -3,7 +3,7 @@
 namespace RateLimiterService.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     public class CheckController
         : Controller
     {

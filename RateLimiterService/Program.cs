@@ -7,6 +7,8 @@ builder.AddServiceDefaults();
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = builder.Configuration.GetConnectionString("Redis");
@@ -22,7 +24,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseAuthorization();
 
 app.MapControllers();
