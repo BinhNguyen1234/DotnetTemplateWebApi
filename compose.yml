@@ -64,7 +64,7 @@ services:
     container_name: binh-dev-redis
     restart: always
     ports:
-      - "6379:6379"
+      - "6389:6379"
     networks:
       - my-network-1
     healthcheck:

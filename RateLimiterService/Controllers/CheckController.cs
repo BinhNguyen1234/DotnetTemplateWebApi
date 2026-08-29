@@ -4,8 +4,7 @@ namespace RateLimiterService.Controllers
 {
     [ApiController]
     [Route("[controller]/[action]")]
-    public class CheckController
-        : Controller
+    public class CheckController : ControllerBase
     {
         [HttpGet]
         public async Task<IActionResult> Get()
