@@ -11,6 +11,7 @@
     <PackageReference Include="Confluent.Kafka" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" />
+    <PackageReference Include="prometheus-net.AspNetCore" />
     <PackageReference Include="Swashbuckle.AspNetCore" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore" />
   </ItemGroup>

@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: WebControllerApi/Dockerfile
     container_name: my-api-controller-container
+    networks:
+      - my-network-1
     depends_on:
       - pg-sql-binh
     ports:
@@ -20,24 +22,31 @@ services:
       context: .
       dockerfile: RateLimiterService/Dockerfile
     container_name : rate-limiter-api-container
+    networks:
+      - my-network-1
     depends_on:
       redis-binh:
         condition: service_healthy
     ports:
       - "5003:8080"
-    networks:
-      - my-network-1
   web-minimal-api:
     image: "web-minimal-api-v1"
     container_name: web-minimal-api-container
     build:
       context: .
       dockerfile: WebMinimalApiAOT/Dockerfile
+    networks:
+      - my-network-1
     depends_on:
       pg-sql-binh:
         condition: service_healthy
     ports:
       - "5002:8080"
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
     networks:
       - my-network-1
   pg-sql-binh:
@@ -72,6 +81,15 @@ services:
       interval: 5s
       timeout: 3s
       retries: 5
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - my-network-1
 networks:
   my-network-1:
     driver: bridge

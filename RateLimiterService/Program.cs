@@ -1,3 +1,5 @@
+using Prometheus;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
@@ -26,8 +28,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseAuthorization();
+app.UseHttpMetrics();
+app.MapMetrics();
 
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();

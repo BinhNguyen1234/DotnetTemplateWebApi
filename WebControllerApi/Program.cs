@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Prometheus;
 using WebControllerApi.Insfrastructure;
 using WebControllerApi.Insfrastructure.Database.Context;
 
@@ -23,7 +24,8 @@ app.UseHttpsRedirection();
 
 app.UseSwagger();
 app.UseSwaggerUI();
-
+app.UseHttpMetrics();
+app.MapMetrics();
 app.UseAuthorization();
 
 app.MapControllers();
